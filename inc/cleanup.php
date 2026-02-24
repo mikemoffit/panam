@@ -29,43 +29,46 @@ add_action('init', function () {
 });
 
 /**
- * Prevent Global Styles from generating inline CSS + SVG filters on the frontend
- * This targets:
- * - <style id="global-styles-inline-css">
- * - <style id="classic-theme-styles-inline-css">
- * - SVG filters injected in the body
+ * Remove Global Styles + Classic Theme Styles output hooks
+ * IMPORTANT: remove_action must match the priority used in core.
  */
-add_action('after_setup_theme', function () {
+add_action('init', function () {
   if (is_admin()) return;
 
-  // Stop global styles output
-  remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
-  remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
+  // Global Styles (this produces <style id="global-styles-inline-css">)
+  remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles', 1);
+  remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles', 10);
 
-  // Stop classic theme inline styles output
-  remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles');
-}, 20);
+  // SVG filters printed into the body
+  remove_action('wp_body_open', 'wp_global_styles_render_svg_filters', 1);
+  remove_action('wp_body_open', 'wp_global_styles_render_svg_filters', 10);
 
-// Hard stop: return empty global stylesheet (kills global-styles-inline-css output)
+  // Classic theme styles (this produces <style id="classic-theme-styles-inline-css">)
+  remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles', 1);
+  remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles', 10);
+}, 0);
+
+/**
+ * Hard stop: even if something still tries to generate it, return empty.
+ * (Some setups still output an empty <style> tag, but this removes the contents.)
+ */
 add_filter('wp_get_global_stylesheet', function ($stylesheet) {
   return '';
 }, 10, 1);
 
-// Hard stop: remove SVG filter output
 add_filter('wp_global_styles_get_svg_filters', '__return_empty_string');
 add_filter('wp_global_styles_render_svg_filters', '__return_empty_string');
 
 /**
- * Dequeue block library CSS + global styles handles (frontend)
- * This targets wp-block-xxxx css.
+ * Dequeue style handles just in case something else enqueues them later
  */
 add_action('wp_enqueue_scripts', function () {
   if (is_admin()) return;
 
+  wp_dequeue_style('global-styles');
+  wp_dequeue_style('classic-theme-styles');
+
   wp_dequeue_style('wp-block-library');
   wp_dequeue_style('wp-block-library-theme');
   wp_dequeue_style('wp-block-navigation');
-
-  wp_dequeue_style('global-styles');
-  wp_dequeue_style('classic-theme-styles');
 }, 100);
