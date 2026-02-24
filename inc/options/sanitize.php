@@ -8,6 +8,13 @@ function panam_sanitize_theme_settings($input): array {
   $clean['site_logo_id']  = isset($input['site_logo_id']) ? (int) $input['site_logo_id'] : 0;
   $clean['site_logo_alt'] = isset($input['site_logo_alt']) ? sanitize_text_field($input['site_logo_alt']) : '';
 
+  /* ===== Primary Color ===== */
+  $primary = isset($input['primary_color'])
+    ? sanitize_hex_color($input['primary_color'])
+    : '';
+
+  $clean['primary_color'] = $primary ?: '#111827';
+
   $clean['contact_email']   = isset($input['contact_email']) ? sanitize_email($input['contact_email']) : '';
   $clean['contact_phone']   = isset($input['contact_phone']) ? sanitize_text_field($input['contact_phone']) : '';
   $clean['contact_address'] = isset($input['contact_address']) ? sanitize_textarea_field($input['contact_address']) : '';
@@ -26,7 +33,3 @@ function panam_sanitize_theme_settings($input): array {
 
   return $clean;
 }
-
-case 'primary_color':
-  $output[$key] = sanitize_hex_color($value) ?: '#111827';
-  break;
