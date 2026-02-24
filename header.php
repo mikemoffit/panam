@@ -56,7 +56,6 @@
         <a class="panam-call-btn" href="tel:<?php echo esc_attr($tel); ?>">
           <span class="panam-call-btn-text"><?php echo esc_html($cta_text); ?></span>
           <span class="panam-call-icon" aria-hidden="true">☎</span>
-          <span class="screen-reader-text"><?php echo esc_html__('Call now', 'panam'); ?></span>
         </a>
       <?php endif; ?>
     </div>
