@@ -5,7 +5,7 @@
     <?php while (have_posts()) : the_post(); ?>
       <article <?php post_class(); ?>>
         <h1><?php the_title(); ?></h1>
-        <div><?php the_content(); ?></div>
+        <div class="panam-prose"><?php the_content(); ?></div>
       </article>
     <?php endwhile; ?>
   </div>
