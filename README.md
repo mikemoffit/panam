@@ -1,0 +1,2 @@
+# panam
+Panam Wordpress Theme
