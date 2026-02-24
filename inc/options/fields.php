@@ -69,3 +69,19 @@ function panam_field_media_image(array $args): void {
 
   echo '<div class="panam-media-preview">' . $preview . '</div>';
 }
+
+function panam_field_color(array $args): void {
+  $key = $args['key'];
+  $value = panam_get_theme_setting($key, $args['default'] ?? '#111827');
+
+  printf(
+    '<input type="text" class="panam-color-field" name="%s[%s]" value="%s" data-default-color="%s" />',
+    esc_attr(PANAM_THEME_OPTIONS_KEY),
+    esc_attr($key),
+    esc_attr((string) $value),
+    esc_attr($args['default'] ?? '#111827')
+  );
+}
+
+error_log('Panam fields.php loaded from: ' . __FILE__);
+
