@@ -271,3 +271,28 @@ body {
   max-width: 200px;
   height: auto;
 }
+
+/* =========================
+   Mobile menu animation
+   ========================= */
+
+/* Base animated state (mobile only) */
+@media (max-width: 1024px) {
+  .panam-nav-mobile {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 220ms ease, opacity 160ms ease, transform 160ms ease;
+  }
+
+  /* Open state controlled by a class on <html> */
+  html.panam-menu-open .panam-nav-mobile {
+    max-height: 70vh; /* enough to show most menus */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hidden attribute must still hard-hide it */
+.panam-nav-mobile[hidden] { display: none !important; }
