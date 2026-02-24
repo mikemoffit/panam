@@ -72,3 +72,10 @@ add_filter('wp_get_custom_css', function ($css) {
 add_filter('render_block', function ($block_content, $block) {
   return $block_content;
 }, 10, 2);
+
+add_filter('wp_global_styles_get_svg_filters', '__return_empty_string');
+add_filter('wp_global_styles_render_svg_filters', '__return_empty_string');
+
+add_filter('wp_get_global_stylesheet', function ($stylesheet) {
+  return '';
+}, 10, 1);
