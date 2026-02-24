@@ -19,97 +19,58 @@ body {
   margin-inline: auto;
 }
 
+.main { padding: 2rem 0; }
+
+/* Basic nav links (used in footer too) */
+.nav a {
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+/* If you follow the "no inline styles" rule, use this for footer nav spacing */
+.nav-footer { margin-top: 0.75rem; }
+
+/* =========================
+   Header + Footer
+   ========================= */
 .site-header {
   padding: 1rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
 
 .site-footer {
-  border-bottom: 0;
   border-top: 1px solid #e5e7eb;
   margin-top: 2rem;
+  padding: 1rem 0;
 }
 
-.main {
-  padding: 2rem 0;
-}
-
-.nav a {
-  margin-right: 1rem;
-  text-decoration: none;
-}
-
-
-/* ===== Panam Responsive Header ===== */
-.site-header { border-bottom: 1px solid #e5e7eb; }
-.site-logo svg { height:40px; }
-
+/* =========================
+   Header layout (Panam)
+   ========================= */
 .panam-header {
   display: grid;
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 0;
 }
-/* ===== Header visibility rules (single source of truth) ===== */
 
-/* Desktop defaults */
-.panam-burger { display: none; }
-.panam-nav-desktop { display: block; }
-
-/* Mobile menu is controlled by [hidden] */
-.panam-nav-mobile[hidden] { display: none !important; }
-
-/* Tablet/Mobile */
-@media (max-width: 1024px) {
-  .panam-burger { display: inline-flex; }
-  .panam-nav-desktop { display: none; }
-}
-/* Frontend Logo */
-.site-logo {
-  display: block;
-  height: 44px;
-  width: auto;
-}
-
-/* Admin Logo Preview */
-.panam-media-preview-box {
-  max-width: 220px;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.panam-media-preview-img {
-  display: block;
-  max-width: 200px;
-  height: auto;
-}
-.panam-media-field {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-}
 /* Desktop: 3 columns: 20/60/20 */
 @media (min-width: 1025px) {
-  .panam-header {
-    grid-template-columns: 20% 60% 20%;
-  }
+  .panam-header { grid-template-columns: 20% 60% 20%; }
 
   .panam-burger { display: none; }
-  .panam-nav-mobile { display: none !important; }
+  .panam-nav-desktop { display: block; }
 
   .panam-logo { justify-self: start; }
   .panam-nav-desktop { justify-self: center; }
   .panam-cta { justify-self: end; }
 }
 
-/* Tablet/Mobile layout: burger | logo | phone */
+/* Tablet/Mobile: burger | logo | phone */
 @media (max-width: 1024px) {
-  .panam-header {
-    grid-template-columns: 48px 1fr 48px;
-  }
+  .panam-header { grid-template-columns: 48px 1fr 48px; }
 
+  .panam-burger { display: inline-flex; }
   .panam-nav-desktop { display: none; }
 
   .panam-logo { justify-self: center; text-align: center; }
@@ -120,9 +81,8 @@ body {
   .panam-call-icon { font-size: 1.25rem; }
 }
 
-/* Logo sizing */
-.panam-logo img,
-.panam-logo svg {
+/* Logo */
+.site-logo {
   display: block;
   height: 44px;
   width: auto;
@@ -161,23 +121,11 @@ body {
   font-weight: 600;
 }
 
-/* Mobile menu panel */
-.panam-nav-mobile {
-  border-top: 1px solid #e5e7eb;
-  padding: 0.75rem 0;
-}
-.panam-nav-mobile ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-.panam-nav-mobile li { padding: 0.35rem 0; }
-.panam-nav-mobile a { text-decoration: none; }
+/* =========================
+   Menus: Desktop + Mobile
+   ========================= */
 
-
-/* ===== Menus: Desktop + Mobile ===== */
-
-/* Base menu reset */
+/* Base reset */
 .panam-nav-desktop ul,
 .panam-nav-mobile ul {
   list-style: none;
@@ -185,7 +133,7 @@ body {
   padding: 0;
 }
 
-/* Desktop menu layout */
+/* Desktop menu */
 .panam-nav-desktop .menu {
   display: flex;
   align-items: center;
@@ -194,7 +142,7 @@ body {
 }
 
 .panam-nav-desktop .menu > li {
-  position: relative; /* for dropdown positioning */
+  position: relative; /* dropdown anchor */
 }
 
 .panam-nav-desktop .menu a {
@@ -206,20 +154,18 @@ body {
   border-radius: 10px;
 }
 
-/* Hover/focus */
 .panam-nav-desktop .menu a:hover,
 .panam-nav-desktop .menu a:focus-visible {
   background: rgba(0,0,0,0.05);
   outline: none;
 }
 
-/* Current page styling */
 .panam-nav-desktop .current-menu-item > a,
 .panam-nav-desktop .current-menu-ancestor > a {
   background: rgba(0,0,0,0.08);
 }
 
-/* Dropdowns (level 2) */ 
+/* Desktop dropdowns */
 .panam-nav-desktop .sub-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -247,7 +193,7 @@ body {
   display: block;
 }
 
-/* Mobile menu panel */
+/* Mobile menu panel styling */
 .panam-nav-mobile {
   border-top: 1px solid #e5e7eb;
   padding: 0.75rem 0;
@@ -279,7 +225,7 @@ body {
   background: rgba(0,0,0,0.1);
 }
 
-/* Mobile sub-menus: indent + lighter */
+/* Mobile submenus */
 .panam-nav-mobile .sub-menu {
   margin-left: 0.75rem;
   margin-top: 0.35rem;
@@ -292,7 +238,36 @@ body {
   background: rgba(0,0,0,0.02);
 }
 
-/* Force the hidden attribute to actually hide the mobile menu */
-.panam-nav-mobile[hidden] {
-  display: none !important;
+/* =========================
+   Mobile menu visibility
+   (IMPORTANT: do not set display:block anywhere else)
+   ========================= */
+.panam-nav-mobile[hidden] { display: none !important; }
+
+/* Optional safety: never show mobile nav on desktop even if hidden gets removed somehow */
+@media (min-width: 1025px) {
+  .panam-nav-mobile { display: none; }
+}
+
+/* =========================
+   Admin: Theme settings media field
+   ========================= */
+.panam-media-field {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.panam-media-preview-box {
+  max-width: 220px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.panam-media-preview-img {
+  display: block;
+  max-width: 200px;
+  height: auto;
 }
