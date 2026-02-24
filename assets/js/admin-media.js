@@ -41,3 +41,9 @@ jQuery(function ($) {
     $wrap.parent().find('.panam-media-preview').empty();
   });
 });
+
+jQuery(function ($) {
+  if ($.fn.wpColorPicker) {
+    $('.panam-color-field').wpColorPicker();
+  }
+});
