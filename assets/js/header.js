@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeMenu() {
     btn.setAttribute('aria-expanded', 'false');
     document.documentElement.classList.remove('panam-menu-open');
+
     window.setTimeout(function () {
       if (!document.documentElement.classList.contains('panam-menu-open')) {
         menu.hidden = true;
@@ -25,12 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
     else openMenu();
   });
 
+  // Close when tapping a link
   menu.addEventListener('click', function (e) {
     const link = e.target.closest('a');
     if (link) closeMenu();
   });
 
+  // Close on resize to desktop
   window.addEventListener('resize', function () {
     if (window.innerWidth >= 1025) closeMenu();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
   });
 });
