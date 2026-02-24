@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) exit;
  * Panam: Cleanup WordPress front-end head/styles
  */
 add_filter( 'should_load_separate_core_block_assets', '__return_false' );
+remove_action('wp_head', 'wp_generator');
 /**
  * Disable Emoji scripts/styles (front + admin)
  */
