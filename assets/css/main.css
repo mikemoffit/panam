@@ -250,3 +250,183 @@ body {
     transform: translateY(0);
   }
 }
+
+/* =========================
+   Panam UI Tokens
+   ========================= */
+
+:root {
+  /* Colors */
+  --panam-bg: #ffffff;
+  --panam-fg: #111827;
+  --panam-muted: #6b7280;
+  --panam-border: #e5e7eb;
+  --panam-surface: #f9fafb;
+
+  --panam-primary: #111827;
+  --panam-primary-contrast: #ffffff;
+
+  --panam-focus: rgba(59, 130, 246, 0.35);
+
+  /* Radius */
+  --panam-r-sm: 10px;
+  --panam-r-md: 14px;
+  --panam-r-lg: 18px;
+  --panam-r-pill: 999px;
+
+  /* Shadow */
+  --panam-shadow-sm: 0 6px 18px rgba(0,0,0,0.08);
+
+  /* Spacing (4px scale-ish) */
+  --panam-1: 0.25rem;
+  --panam-2: 0.5rem;
+  --panam-3: 0.75rem;
+  --panam-4: 1rem;
+  --panam-5: 1.25rem;
+  --panam-6: 1.5rem;
+  --panam-8: 2rem;
+  --panam-10: 2.5rem;
+
+  /* Type */
+  --panam-text: 16px;
+  --panam-leading: 1.55;
+}
+
+html { color: var(--panam-fg); background: var(--panam-bg); }
+body { font-size: var(--panam-text); line-height: var(--panam-leading); }
+
+/* =========================
+   Panam UI Base
+   ========================= */
+
+a { color: inherit; }
+a:hover { text-decoration: none; }
+
+:focus-visible {
+  outline: 3px solid var(--panam-focus);
+  outline-offset: 2px;
+  border-radius: var(--panam-r-sm);
+}
+
+/* Nice default content spacing */
+.panam-prose > * + * { margin-top: var(--panam-4); }
+.panam-prose h1, .panam-prose h2, .panam-prose h3 { line-height: 1.2; }
+.panam-prose h1 { font-size: 2rem; }
+.panam-prose h2 { font-size: 1.5rem; }
+.panam-prose h3 { font-size: 1.25rem; }
+.panam-prose p { color: var(--panam-fg); }
+.panam-prose small { color: var(--panam-muted); }
+
+/* =========================
+   Layout Utilities
+   ========================= */
+
+.panam-section { padding: var(--panam-10) 0; }
+
+.panam-stack { display: flex; flex-direction: column; gap: var(--panam-4); }
+.panam-row { display: flex; align-items: center; gap: var(--panam-3); flex-wrap: wrap; }
+
+.panam-grid {
+  display: grid;
+  gap: var(--panam-6);
+}
+@media (min-width: 768px) {
+  .panam-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panam-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* =========================
+   Components: Buttons
+   ========================= */
+
+.panam-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--panam-2);
+
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--panam-r-pill);
+  border: 1px solid var(--panam-border);
+  background: transparent;
+  color: var(--panam-fg);
+
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.panam-btn:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.panam-btn--primary {
+  background: var(--panam-primary);
+  border-color: var(--panam-primary);
+  color: var(--panam-primary-contrast);
+}
+
+.panam-btn--primary:hover {
+  background: rgba(17,24,39,0.92);
+}
+
+.panam-btn--ghost {
+  border-color: transparent;
+}
+
+.panam-btn--sm { padding: 0.45rem 0.75rem; font-weight: 700; }
+.panam-btn--lg { padding: 0.8rem 1.1rem; font-weight: 800; }
+
+/* =========================
+   Components: Card
+   ========================= */
+
+.panam-card {
+  background: var(--panam-bg);
+  border: 1px solid var(--panam-border);
+  border-radius: var(--panam-r-lg);
+  box-shadow: var(--panam-shadow-sm);
+  padding: var(--panam-6);
+}
+
+.panam-card--soft {
+  background: var(--panam-surface);
+}
+
+/* =========================
+   Components: Forms
+   ========================= */
+
+.panam-field { display: grid; gap: var(--panam-2); }
+.panam-label { font-weight: 700; }
+
+.panam-input,
+.panam-textarea,
+.panam-select {
+  width: 100%;
+  border: 1px solid var(--panam-border);
+  border-radius: var(--panam-r-md);
+  padding: 0.7rem 0.85rem;
+  background: var(--panam-bg);
+  color: var(--panam-fg);
+}
+
+.panam-textarea { min-height: 140px; resize: vertical; }
+
+.panam-help { color: var(--panam-muted); font-size: 0.9rem; }
+
+/* =========================
+   Components: Badge
+   ========================= */
+
+.panam-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--panam-r-pill);
+  border: 1px solid var(--panam-border);
+  background: rgba(0,0,0,0.03);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
