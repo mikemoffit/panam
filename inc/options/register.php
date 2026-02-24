@@ -36,16 +36,10 @@ add_action('admin_init', function () {
   add_settings_section('panam_section_tracking', __('Tracking', 'panam'), '__return_false', 'panam-theme-settings');
   add_settings_section('panam_section_callrail', __('CallRail', 'panam'), '__return_false', 'panam-theme-settings');
 
-  // Branding
-  panam_add_field('site_logo_id', 'Site Logo (SVG/PNG/JPG)', 'panam_field_media_image', 'panam_section_branding');
-  panam_add_field('site_logo_alt', 'Logo Alt Text', 'panam_field_text', 'panam_section_branding');
-  panam_add_field(
-  'primary_color',
-  'Primary Color',
-  'panam_field_color',
-  'panam_section_general',
-  ['default' => '#111827']
-);
+// Branding
+panam_add_field('site_logo_id', 'Site Logo (SVG/PNG/JPG)', 'panam_field_media_image', 'panam_section_branding');
+panam_add_field('site_logo_alt', 'Logo Alt Text', 'panam_field_text', 'panam_section_branding');
+panam_add_field('primary_color', 'Primary Color', 'panam_field_color', 'panam_section_branding', ['default' => '#111827']);
 
   // Contact
   panam_add_field('contact_email', 'Email Address', 'panam_field_text', 'panam_section_contact', ['type' => 'email']);
