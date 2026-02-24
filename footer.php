@@ -15,7 +15,7 @@
   </div>
 </footer>
 
-<script>
+<script> 
 document.addEventListener('DOMContentLoaded', function(){
   const btn = document.querySelector('.panam-burger');
   const menu = document.getElementById('panam-mobile-menu');
