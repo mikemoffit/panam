@@ -10,6 +10,16 @@ add_action('wp_enqueue_scripts', function () {
     PANAM_THEME_VERSION
   );
 
+$primary = panam_get_theme_setting('primary_color', '#111827');
+
+if ($primary) {
+  wp_add_inline_style(
+    'panam-main',
+    ":root { --panam-primary: {$primary}; }"
+  );
+}
+
+
   // Frontend JS (burger/menu)
   wp_enqueue_script(
     'panam-header',
