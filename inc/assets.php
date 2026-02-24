@@ -57,16 +57,13 @@ add_action('admin_enqueue_scripts', function ($hook) {
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {
-
-  if ($hook !== 'appearance_page_panam-theme-settings') {
-    return;
-  }
+  if ($hook !== 'appearance_page_panam-theme-settings') return;
 
   wp_enqueue_style('wp-color-picker');
   wp_enqueue_script('wp-color-picker');
 
   wp_add_inline_script(
     'wp-color-picker',
-    "jQuery(document).ready(function($){ $('.panam-color-field').wpColorPicker(); });"
+    "jQuery(function($){ $('.panam-color-field').wpColorPicker(); });"
   );
 });
