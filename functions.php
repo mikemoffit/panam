@@ -10,11 +10,17 @@ require_once PANAM_THEME_DIR . '/inc/cleanup.php';
 require_once PANAM_THEME_DIR . '/inc/assets.php';
 require_once PANAM_THEME_DIR . '/inc/template-tags.php';
 
-require_once PANAM_THEME_DIR . '/inc/options/register.php';
+/**
+ * Options (order matters)
+ */
 require_once PANAM_THEME_DIR . '/inc/options/fields.php';
 require_once PANAM_THEME_DIR . '/inc/options/sanitize.php';
 require_once PANAM_THEME_DIR . '/inc/options/render.php';
 require_once PANAM_THEME_DIR . '/inc/options/media.php';
 require_once PANAM_THEME_DIR . '/inc/options/register.php';
+
+/**
+ * Integrations
+ */
 require_once PANAM_THEME_DIR . '/inc/integrations/gtm.php';
 require_once PANAM_THEME_DIR . '/inc/integrations/callrail.php';
