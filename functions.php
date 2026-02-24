@@ -11,7 +11,7 @@ require_once PANAM_THEME_DIR . '/inc/assets.php';
 require_once PANAM_THEME_DIR . '/inc/template-tags.php';
 
 /**
- * Options (order matters)
+ * Options (ORDER MATTERS)
  */
 require_once PANAM_THEME_DIR . '/inc/options/fields.php';
 require_once PANAM_THEME_DIR . '/inc/options/sanitize.php';
