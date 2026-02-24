@@ -39,7 +39,20 @@ add_action('admin_init', function () {
 // Branding
 panam_add_field('site_logo_id', 'Site Logo (SVG/PNG/JPG)', 'panam_field_media_image', 'panam_section_branding');
 panam_add_field('site_logo_alt', 'Logo Alt Text', 'panam_field_text', 'panam_section_branding');
-panam_add_field('primary_color', 'Primary Color', 'panam_field_color', 'panam_section_branding', ['default' => '#111827']);
+
+if (function_exists('panam_field_color')) {
+  panam_add_field(
+    'primary_color',
+    'Primary Color',
+    'panam_field_color',
+    'panam_section_branding',
+    ['default' => '#111827']
+  );
+} else {
+  add_action('admin_notices', function () {
+    echo '<div class="notice notice-error"><p><strong>Panam:</strong> panam_field_color() not loaded. Check inc/options/fields.php include path.</p></div>';
+  });
+}
 
   // Contact
   panam_add_field('contact_email', 'Email Address', 'panam_field_text', 'panam_section_contact', ['type' => 'email']);
