@@ -6,6 +6,7 @@ define('PANAM_THEME_DIR', get_template_directory());
 define('PANAM_THEME_URI', get_template_directory_uri());
 
 require_once PANAM_THEME_DIR . '/inc/setup.php';
+require_once PANAM_THEME_DIR . '/inc/cleanup.php';
 require_once PANAM_THEME_DIR . '/inc/assets.php';
 require_once PANAM_THEME_DIR . '/inc/template-tags.php';
 
