@@ -26,3 +26,7 @@ function panam_sanitize_theme_settings($input): array {
 
   return $clean;
 }
+
+case 'primary_color':
+  $output[$key] = sanitize_hex_color($value) ?: '#111827';
+  break;
