@@ -19,6 +19,7 @@ require_once PANAM_THEME_DIR . '/inc/options/sanitize.php';
 require_once PANAM_THEME_DIR . '/inc/options/render.php';
 require_once PANAM_THEME_DIR . '/inc/options/media.php';
 require_once PANAM_THEME_DIR . '/inc/options/register.php';
+require_once PANAM_THEME_DIR . '/inc/options/runtime-css.php';
 
 /**
  * Integrations
