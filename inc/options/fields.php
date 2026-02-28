@@ -85,3 +85,20 @@ function panam_field_color(array $args): void {
 
 error_log('Panam fields.php loaded from: ' . __FILE__);
 
+function panam_field_select(array $args): void {
+  $key = $args['key'];
+  $options = $args['options'] ?? [];
+  $default = $args['default'] ?? '';
+  $value = (string) panam_get_theme_setting($key, $default);
+
+  printf('<select name="%s[%s]">', esc_attr(PANAM_THEME_OPTIONS_KEY), esc_attr($key));
+  foreach ($options as $opt_value => $label) {
+    printf(
+      '<option value="%s" %s>%s</option>',
+      esc_attr((string) $opt_value),
+      selected($value, (string) $opt_value, false),
+      esc_html((string) $label)
+    );
+  }
+  echo '</select>';
+}
