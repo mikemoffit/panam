@@ -186,11 +186,14 @@ body {
   top: calc(100% + 10px);
   left: 0;
   min-width: 220px;
+
   background: var(--panam-bg);
   border: 1px solid var(--panam-border);
   border-radius: var(--panam-r-md);
   padding: 0.4rem;
+
   box-shadow: var(--panam-shadow-sm);
+
   display: none;
   z-index: 20;
 }
@@ -200,6 +203,23 @@ body {
   padding: 0.55rem 0.65rem;
   border-radius: var(--panam-r-md);
   font-weight: 600;
+
+  color: var(--panam-fg);
+  background: transparent;
+
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.panam-nav-desktop .sub-menu li a:hover,
+.panam-nav-desktop .sub-menu li a:focus-visible {
+  background: var(--panam-primary-100);
+  color: var(--panam-primary);
+  outline: none;
+}
+
+.panam-nav-desktop .sub-menu .current-menu-item > a {
+  background: var(--panam-primary-200);
+  color: var(--panam-primary);
 }
 
 .panam-nav-desktop .menu > li:hover > .sub-menu,
