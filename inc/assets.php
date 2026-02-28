@@ -9,7 +9,12 @@ add_action('wp_enqueue_scripts', function () {
     [],
     PANAM_THEME_VERSION
   );
-
+wp_enqueue_style(
+  'panam-runtime',
+  get_template_directory_uri() . '/assets/css/runtime.css',
+  ['panam-main'],
+  PANAM_THEME_VERSION
+);
   // Primary color -> CSS variable (safe)
   $primary = panam_get_theme_setting('primary_color', '#111827');
   $primary = sanitize_hex_color($primary) ?: '#111827';
@@ -56,3 +61,4 @@ add_action('admin_enqueue_scripts', function ($hook) {
     true
   );
 });
+
