@@ -161,18 +161,22 @@ body {
   font-weight: 600;
   padding: 0.4rem 0.2rem;
   border-radius: var(--panam-r-sm);
+
   color: var(--panam-fg);
+  transition: background 160ms ease, color 160ms ease;
 }
 
 .panam-nav-desktop .menu a:hover,
 .panam-nav-desktop .menu a:focus-visible {
-  background: var(--panam-surface);
+  background: var(--panam-primary-100);
+  color: var(--panam-primary);
   outline: none;
 }
 
 .panam-nav-desktop .current-menu-item > a,
 .panam-nav-desktop .current-menu-ancestor > a {
-  background: var(--panam-surface);
+  background: var(--panam-primary-200);
+  color: var(--panam-primary);
 }
 
 /* Dropdown */
