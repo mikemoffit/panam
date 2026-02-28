@@ -2,12 +2,13 @@
    Base
    ========================= */
 
-:root { color-scheme: light; }
-
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: var(--panam-leading);
+  font-size: var(--panam-text);
+  color: var(--panam-fg);
+  background: var(--panam-bg);
 }
 
 .container {
@@ -23,20 +24,21 @@ body {
 
 .site-header {
   padding: 1rem 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--panam-border);
+  background: var(--panam-bg);
 }
 
 .site-footer {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--panam-border);
   margin-top: 2rem;
   padding: 1rem 0;
+  background: var(--panam-bg);
 }
 
-/* Footer spacing helper */
 .nav-footer { margin-top: 0.75rem; }
 
 /* =========================
-   Header layout (Panam)
+   Header layout
    ========================= */
 
 .panam-header {
@@ -46,7 +48,6 @@ body {
   padding: 0.75rem 0;
 }
 
-/* Logo */
 .site-logo {
   display: block;
   height: 44px;
@@ -54,18 +55,20 @@ body {
 }
 
 /* Burger */
+
 .panam-burger {
   width: 44px;
   height: 44px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--panam-border);
   background: transparent;
-  border-radius: 10px;
+  border-radius: var(--panam-r-sm);
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
   padding: 10px;
+  color: var(--panam-fg);
 }
 
 .panam-burger span {
@@ -76,18 +79,33 @@ body {
 }
 
 /* CTA */
+
 .panam-call-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--panam-2);
   text-decoration: none;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--panam-border);
   padding: 0.6rem 0.85rem;
-  border-radius: 999px;
-  font-weight: 600;
+  border-radius: var(--panam-r-pill);
+  font-weight: 700;
+  background: var(--panam-primary);
+  border-color: var(--panam-primary);
+  color: var(--panam-on-primary);
 }
 
-/* Desktop: 3 columns */
+.panam-call-btn:hover {
+  background: var(--panam-primary-hover);
+  border-color: var(--panam-primary-hover);
+}
+
+.panam-call-btn:active {
+  background: var(--panam-primary-active);
+  border-color: var(--panam-primary-active);
+}
+
+/* Desktop */
+
 @media (min-width: 1025px) {
   .panam-header { grid-template-columns: 20% 60% 20%; }
 
@@ -98,11 +116,11 @@ body {
   .panam-nav-desktop { justify-self: center; }
   .panam-cta { justify-self: end; }
 
-  /* Never show mobile panel on desktop */
   .panam-nav-mobile { display: none !important; }
 }
 
-/* Tablet/Mobile: burger | logo | phone */
+/* Mobile */
+
 @media (max-width: 1024px) {
   .panam-header { grid-template-columns: 48px 1fr 48px; }
 
@@ -127,7 +145,6 @@ body {
   padding: 0;
 }
 
-/* Desktop menu */
 .panam-nav-desktop .menu {
   display: flex;
   align-items: center;
@@ -143,31 +160,33 @@ body {
   text-decoration: none;
   font-weight: 600;
   padding: 0.4rem 0.2rem;
-  border-radius: 10px;
+  border-radius: var(--panam-r-sm);
+  color: var(--panam-fg);
 }
 
 .panam-nav-desktop .menu a:hover,
 .panam-nav-desktop .menu a:focus-visible {
-  background: rgba(0,0,0,0.05);
+  background: var(--panam-surface);
   outline: none;
 }
 
 .panam-nav-desktop .current-menu-item > a,
 .panam-nav-desktop .current-menu-ancestor > a {
-  background: rgba(0,0,0,0.08);
+  background: var(--panam-surface);
 }
 
-/* Desktop dropdown */
+/* Dropdown */
+
 .panam-nav-desktop .sub-menu {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
   min-width: 220px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  background: var(--panam-bg);
+  border: 1px solid var(--panam-border);
+  border-radius: var(--panam-r-md);
   padding: 0.4rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: var(--panam-shadow-sm);
   display: none;
   z-index: 20;
 }
@@ -175,7 +194,7 @@ body {
 .panam-nav-desktop .sub-menu li a {
   display: block;
   padding: 0.55rem 0.65rem;
-  border-radius: 12px;
+  border-radius: var(--panam-r-md);
   font-weight: 600;
 }
 
@@ -184,13 +203,14 @@ body {
   display: block;
 }
 
-/* Mobile menu panel */
+/* Mobile menu */
+
 .panam-nav-mobile {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--panam-border);
   padding: 0.75rem 0;
+  background: var(--panam-bg);
 }
 
-/* Respect hidden attribute */
 .panam-nav-mobile[hidden] { display: none !important; }
 
 .panam-nav-mobile .menu {
@@ -202,37 +222,38 @@ body {
 .panam-nav-mobile .menu a {
   display: block;
   padding: 0.85rem 0.9rem;
-  border-radius: 14px;
+  border-radius: var(--panam-r-md);
   text-decoration: none;
   font-weight: 700;
-  background: rgba(0,0,0,0.03);
+  background: var(--panam-surface);
+  color: var(--panam-fg);
 }
 
 .panam-nav-mobile .menu a:hover,
 .panam-nav-mobile .menu a:focus-visible {
-  background: rgba(0,0,0,0.07);
+  background: var(--panam-primary-100);
   outline: none;
 }
 
 .panam-nav-mobile .current-menu-item > a,
 .panam-nav-mobile .current-menu-ancestor > a {
-  background: rgba(0,0,0,0.1);
+  background: var(--panam-primary-200);
 }
 
 .panam-nav-mobile .sub-menu {
   margin-left: 0.75rem;
   margin-top: 0.35rem;
   padding-left: 0.25rem;
-  border-left: 2px solid rgba(0,0,0,0.08);
+  border-left: 2px solid var(--panam-border);
 }
 
 .panam-nav-mobile .sub-menu a {
   font-weight: 600;
-  background: rgba(0,0,0,0.02);
+  background: var(--panam-surface);
 }
 
 /* =========================
-   Mobile menu animation
+   Mobile animation
    ========================= */
 
 @media (max-width: 1024px) {
@@ -252,11 +273,10 @@ body {
 }
 
 /* =========================
-   Panam UI Tokens
+   UI Tokens (Fallbacks)
    ========================= */
 
 :root {
-  /* Colors */
   --panam-bg: #ffffff;
   --panam-fg: #111827;
   --panam-muted: #6b7280;
@@ -264,20 +284,19 @@ body {
   --panam-surface: #f9fafb;
 
   --panam-primary: #111827;
-  --panam-primary-contrast: #ffffff;
+  --panam-primary-hover: #0b1220;
+  --panam-primary-active: #050a12;
+  --panam-on-primary: #ffffff;
 
   --panam-focus: rgba(59, 130, 246, 0.35);
 
-  /* Radius */
   --panam-r-sm: 10px;
   --panam-r-md: 14px;
   --panam-r-lg: 18px;
   --panam-r-pill: 999px;
 
-  /* Shadow */
   --panam-shadow-sm: 0 6px 18px rgba(0,0,0,0.08);
 
-  /* Spacing (4px scale-ish) */
   --panam-1: 0.25rem;
   --panam-2: 0.5rem;
   --panam-3: 0.75rem;
@@ -287,56 +306,12 @@ body {
   --panam-8: 2rem;
   --panam-10: 2.5rem;
 
-  /* Type */
   --panam-text: 16px;
   --panam-leading: 1.55;
 }
 
-html { color: var(--panam-fg); background: var(--panam-bg); }
-body { font-size: var(--panam-text); line-height: var(--panam-leading); }
-
 /* =========================
-   Panam UI Base
-   ========================= */
-
-a { color: inherit; }
-a:hover { text-decoration: none; }
-
-:focus-visible {
-  outline: 3px solid var(--panam-focus);
-  outline-offset: 2px;
-  border-radius: var(--panam-r-sm);
-}
-
-/* Nice default content spacing */
-.panam-prose > * + * { margin-top: var(--panam-4); }
-.panam-prose h1, .panam-prose h2, .panam-prose h3 { line-height: 1.2; }
-.panam-prose h1 { font-size: 2rem; }
-.panam-prose h2 { font-size: 1.5rem; }
-.panam-prose h3 { font-size: 1.25rem; }
-.panam-prose p { color: var(--panam-fg); }
-.panam-prose small { color: var(--panam-muted); }
-
-/* =========================
-   Layout Utilities
-   ========================= */
-
-.panam-section { padding: var(--panam-10) 0; }
-
-.panam-stack { display: flex; flex-direction: column; gap: var(--panam-4); }
-.panam-row { display: flex; align-items: center; gap: var(--panam-3); flex-wrap: wrap; }
-
-.panam-grid {
-  display: grid;
-  gap: var(--panam-6);
-}
-@media (min-width: 768px) {
-  .panam-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .panam-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-/* =========================
-   Components: Buttons
+   Buttons
    ========================= */
 
 .panam-btn {
@@ -344,13 +319,11 @@ a:hover { text-decoration: none; }
   align-items: center;
   justify-content: center;
   gap: var(--panam-2);
-
   padding: 0.65rem 0.95rem;
   border-radius: var(--panam-r-pill);
   border: 1px solid var(--panam-border);
   background: transparent;
   color: var(--panam-fg);
-
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -358,75 +331,21 @@ a:hover { text-decoration: none; }
 }
 
 .panam-btn:hover {
-  background: rgba(0,0,0,0.03);
+  background: var(--panam-surface);
 }
 
 .panam-btn--primary {
   background: var(--panam-primary);
   border-color: var(--panam-primary);
-  color: var(--panam-primary-contrast);
+  color: var(--panam-on-primary);
 }
 
 .panam-btn--primary:hover {
-  background: rgba(17,24,39,0.92);
+  background: var(--panam-primary-hover);
+  border-color: var(--panam-primary-hover);
 }
 
-.panam-btn--ghost {
-  border-color: transparent;
-}
-
-.panam-btn--sm { padding: 0.45rem 0.75rem; font-weight: 700; }
-.panam-btn--lg { padding: 0.8rem 1.1rem; font-weight: 800; }
-
-/* =========================
-   Components: Card
-   ========================= */
-
-.panam-card {
-  background: var(--panam-bg);
-  border: 1px solid var(--panam-border);
-  border-radius: var(--panam-r-lg);
-  box-shadow: var(--panam-shadow-sm);
-  padding: var(--panam-6);
-}
-
-.panam-card--soft {
-  background: var(--panam-surface);
-}
-
-/* =========================
-   Components: Forms
-   ========================= */
-
-.panam-field { display: grid; gap: var(--panam-2); }
-.panam-label { font-weight: 700; }
-
-.panam-input,
-.panam-textarea,
-.panam-select {
-  width: 100%;
-  border: 1px solid var(--panam-border);
-  border-radius: var(--panam-r-md);
-  padding: 0.7rem 0.85rem;
-  background: var(--panam-bg);
-  color: var(--panam-fg);
-}
-
-.panam-textarea { min-height: 140px; resize: vertical; }
-
-.panam-help { color: var(--panam-muted); font-size: 0.9rem; }
-
-/* =========================
-   Components: Badge
-   ========================= */
-
-.panam-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--panam-r-pill);
-  border: 1px solid var(--panam-border);
-  background: rgba(0,0,0,0.03);
-  font-weight: 700;
-  font-size: 0.85rem;
+.panam-btn--primary:active {
+  background: var(--panam-primary-active);
+  border-color: var(--panam-primary-active);
 }
