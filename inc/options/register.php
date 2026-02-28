@@ -53,7 +53,26 @@ if (function_exists('panam_field_color')) {
     echo '<div class="notice notice-error"><p><strong>Panam:</strong> panam_field_color() not loaded. Check inc/options/fields.php include path.</p></div>';
   });
 }
+// Colors
+panam_add_field('primary_color',   'Primary Color',   'panam_field_color', 'panam_section_branding', ['default' => '#111827']);
+panam_add_field('secondary_color', 'Secondary Color', 'panam_field_color', 'panam_section_branding', ['default' => '#6b7280']);
+panam_add_field('accent_color',    'Accent Color',    'panam_field_color', 'panam_section_branding', ['default' => '#22c55e']);
 
+// Mode
+panam_add_field(
+  'color_mode',
+  'Color Mode',
+  'panam_field_select',
+  'panam_section_branding',
+  [
+    'default' => 'auto',
+    'options' => [
+      'auto'  => 'Auto (system)',
+      'light' => 'Force Light',
+      'dark'  => 'Force Dark',
+    ],
+  ]
+);
   // Contact
   panam_add_field('contact_email', 'Email Address', 'panam_field_text', 'panam_section_contact', ['type' => 'email']);
   panam_add_field('contact_phone', 'Phone Number', 'panam_field_text', 'panam_section_contact');
